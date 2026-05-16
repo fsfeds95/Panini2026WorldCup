@@ -1,1 +1,114 @@
-1
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <title>Panini World Cup 2026 - Mi Colección Móvil</title>
+    <link rel="stylesheet" href="estilos.css">
+    <!-- Preconnect para mejorar carga de imágenes -->
+    <link rel="preconnect" href="https://flagpedia.net">
+    <link rel="preconnect" href="https://upload.wikimedia.org">
+</head>
+<body>
+
+    <header>
+        <img src="https://upload.wikimedia.org/wikipedia/en/1/17/2026_FIFA_World_Cup_emblem.svg" alt="Logo Mundial 2026" class="logo" loading="lazy">
+        <h1>Panini World Cup 2026</h1>
+        <h2>Mi Colección Móvil</h2>
+    </header>
+
+    <!-- Panel de Estadísticas -->
+    <section class="panel-control">
+        <div class="estadisticas">
+            <div class="stat">
+                <span class="stat-num" id="total">0</span>
+                <span class="stat-label">Total</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num" id="tengo">0</span>
+                <span class="stat-label">Tengo</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num" id="faltan">0</span>
+                <span class="stat-label">Faltan</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num" id="porcentaje">0%</span>
+                <span class="stat-label">Completado</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num" id="repetidas">0</span>
+                <span class="stat-label">Repetidas</span>
+            </div>
+        </div>
+
+        <!-- Filtros mejorados para móvil -->
+        <div class="filtros">
+            <input type="text" id="busqueda" placeholder="🔍 Buscar jugador...">
+            
+            <select id="filtroGrupo">
+                <option value="">Todos los grupos (A-L)</option>
+                <option value="A">Grupo A</option><option value="B">Grupo B</option>
+                <option value="C">Grupo C</option><option value="D">Grupo D</option>
+                <option value="E">Grupo E</option><option value="F">Grupo F</option>
+                <option value="G">Grupo G</option><option value="H">Grupo H</option>
+                <option value="I">Grupo I</option><option value="J">Grupo J</option>
+                <option value="K">Grupo K</option><option value="L">Grupo L</option>
+            </select>
+            
+            <select id="filtroEquipo">
+                <option value="">Todos los equipos</option>
+            </select>
+            
+            <label class="checkbox-faltan">
+                <input type="checkbox" id="mostrarSoloFaltan">
+                📋 Solo faltantes
+            </label>
+        </div>
+    </section>
+
+    <!-- Pestañas de Navegación (grandes para dedos) -->
+    <nav class="tabs">
+        <button class="tab-btn activo" data-vista="equipos">🏆 Equipos</button>
+        <button class="tab-btn" data-vista="especiales">💎 Especiales</button>
+        <button class="tab-btn" data-vista="faltantes">📋 Faltantes</button>
+        <button class="tab-btn" data-vista="repetidas-tab">🔄 Repetidas</button>
+    </nav>
+
+    <!-- Contenedor de Vistas -->
+    <main>
+        <!-- Vista: Equipos -->
+        <section id="vistaEquipos" class="vista activa">
+            <div id="gridEquipos" class="grid-equipos"></div>
+            <div id="detalleEquipo" class="detalle-equipo oculto">
+                <button id="btnVolver" class="btn-volver">← Volver a equipos</button>
+                <h3 id="nombreEquipoSeleccionado"></h3>
+                <div id="plantillaEquipo" class="plantilla-equipo"></div>
+            </div>
+        </section>
+
+        <!-- Vista: Especiales -->
+        <section id="vistaEspeciales" class="vista">
+            <div id="listaEspeciales" class="lista-estampas"></div>
+        </section>
+
+        <!-- Vista: Faltantes -->
+        <section id="vistaFaltantes" class="vista">
+            <div id="listaFaltantes" class="lista-estampas"></div>
+        </section>
+
+        <!-- Vista: Repetidas -->
+        <section id="vistaRepetidas" class="vista">
+            <div id="listaRepetidas" class="lista-estampas"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>FIFA World Cup 2026™ Panini - Gestor Móvil | 48 Equipos | 960+ Cromos</p>
+        <button id="btnReset" class="btn-reset">⚠️ Reiniciar Colección</button>
+    </footer>
+
+    <script src="datos.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
