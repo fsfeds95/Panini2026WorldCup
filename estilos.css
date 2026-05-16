@@ -1,1 +1,343 @@
-1
+/* ===== RESET Y VARIABLES MÓVIL ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Elimina gris al tocar */
+}
+
+:root {
+    --rojo-panini: #d32f2f;
+    --azul-fifa: #1a237e;
+    --dorado: #f9a825;
+    --gris-claro: #f5f5f5;
+    --gris-medio: #e0e0e0;
+    --gris-oscuro: #424242;
+    --blanco: #ffffff;
+    --sombra: 0 2px 8px rgba(0,0,0,0.1);
+    --borde-redondo: 12px;
+    --touch-target: 44px; /* Mínimo para dedos */
+}
+
+body {
+    font-family: -apple-system, 'Segoe UI', Roboto, system-ui, sans-serif;
+    background: linear-gradient(135deg, #e8eaf6 0%, #f5f5f5 100%);
+    color: #212121;
+    line-height: 1.4;
+    min-height: 100vh;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ===== HEADER ===== */
+header {
+    background: linear-gradient(90deg, var(--azul-fifa) 0%, #283593 100%);
+    color: var(--blanco);
+    text-align: center;
+    padding: 1rem 1rem 0.8rem;
+    box-shadow: var(--sombra);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    height: 50px;
+    margin-bottom: 0.3rem;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+header h1 {
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+header h2 {
+    font-size: 0.85rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* ===== PANEL DE CONTROL ===== */
+.panel-control {
+    max-width: 1100px;
+    margin: 1rem auto;
+    padding: 0 0.8rem;
+}
+
+.estadisticas {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.stat {
+    background: var(--blanco);
+    border-radius: var(--borde-redondo);
+    padding: 0.7rem 1rem;
+    text-align: center;
+    box-shadow: var(--sombra);
+    min-width: 70px;
+    flex: 1;
+}
+
+.stat-num {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--azul-fifa);
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: var(--gris-oscuro);
+}
+
+.filtros {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    background: var(--blanco);
+    padding: 1rem;
+    border-radius: var(--borde-redondo);
+    box-shadow: var(--sombra);
+}
+
+.filtros input,
+.filtros select {
+    padding: 0.8rem;
+    border: 2px solid var(--gris-medio);
+    border-radius: 10px;
+    font-size: 1rem;
+    background: var(--blanco);
+}
+
+.checkbox-faltan {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.checkbox-faltan input {
+    width: 24px;
+    height: 24px;
+    margin: 0;
+}
+
+/* ===== TABS (grandes para móvil) ===== */
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem auto;
+    max-width: 1100px;
+    padding: 0 0.8rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.tab-btn {
+    padding: 0.8rem 1.2rem;
+    border: none;
+    background: var(--gris-medio);
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    min-height: var(--touch-target);
+}
+
+.tab-btn.activo {
+    background: var(--azul-fifa);
+    color: var(--blanco);
+}
+
+/* ===== GRID EQUIPOS ===== */
+.grid-equipos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.8rem;
+}
+
+.tarjeta-equipo {
+    background: var(--blanco);
+    border-radius: var(--borde-redondo);
+    padding: 1rem;
+    text-align: center;
+    box-shadow: var(--sombra);
+    cursor: pointer;
+    transition: transform 0.2s;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tarjeta-equipo:active {
+    transform: scale(0.98);
+}
+
+.tarjeta-equipo img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+}
+
+.tarjeta-equipo h4 {
+    font-size: 0.9rem;
+    color: var(--gris-oscuro);
+    margin-bottom: 0.3rem;
+}
+
+.tarjeta-equipo .progreso {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--rojo-panini);
+}
+
+/* ===== DETALLE EQUIPO ===== */
+.detalle-equipo {
+    background: var(--blanco);
+    border-radius: var(--borde-redondo);
+    padding: 1rem;
+    box-shadow: var(--sombra);
+}
+
+.detalle-equipo.oculto {
+    display: none;
+}
+
+.btn-volver {
+    background: var(--azul-fifa);
+    color: var(--blanco);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.plantilla-equipo {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+/* ===== ESTAMPA (táctil optimizada) ===== */
+.estampa {
+    background: var(--gris-claro);
+    border-radius: 10px;
+    padding: 0.8rem 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+    position: relative;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+}
+
+.estampa:active {
+    transform: scale(0.97);
+}
+
+.estampa.tengo {
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    border-color: #4caf50;
+}
+
+.estampa.repetida {
+    border-color: var(--dorado);
+    border-width: 3px;
+}
+
+.estampa.repetida::after {
+    content: "🔄";
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    font-size: 1.2rem;
+}
+
+.estampa .nombre-jugador {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--gris-oscuro);
+    margin: 5px 0;
+    word-break: break-word;
+}
+
+.estampa .rareza-badge {
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 12px;
+    background: var(--gris-medio);
+}
+
+.estampa .placeholder-icon {
+    font-size: 2rem;
+    opacity: 0.4;
+}
+
+/* Listas generales */
+.lista-estampas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.8rem;
+}
+
+/* Botón reset */
+.btn-reset {
+    background: var(--rojo-panini);
+    color: var(--blanco);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--gris-oscuro);
+}
+
+/* Responsive pequeño */
+@media (max-width: 480px) {
+    .stat-num {
+        font-size: 1.2rem;
+    }
+    
+    .grid-equipos {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    }
+    
+    .plantilla-equipo {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+    
+    .estampa .nombre-jugador {
+        font-size: 0.7rem;
+    }
+}
